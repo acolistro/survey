@@ -1,6 +1,6 @@
-class CreateSurveys < ActiveRecord::Migration[6.0]
+class CreateAsks < ActiveRecord::Migration[6.0]
   def change
-    create_table :surveys do |t|
+    create_table :asks do |t|
       t.column(:topic, :varchar)
       t.timestamps()
     end

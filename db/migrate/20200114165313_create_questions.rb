@@ -6,7 +6,7 @@ class CreateQuestions < ActiveRecord::Migration[6.0]
       t.column(:answer2, :varchar)
       t.column(:answer3, :varchar)
       t.column(:answer4, :varchar)
-      t.column(:survey_id, :integer)
+      t.column(:ask_id, :integer)
       t.timestamps()
     end
   end

@@ -15,19 +15,24 @@ ActiveRecord::Schema.define(version: 2020_01_14_165548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "asks", force: :cascade do |t|
+    t.string "topic"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "text"
     t.string "answer1"
     t.string "answer2"
     t.string "answer3"
     t.string "answer4"
-    t.integer "survey_id"
+    t.integer "ask_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "responses", force: :cascade do |t|
-    t.integer "survey_id"
     t.integer "question_id"
     t.integer "answer"
     t.string "other_text"
@@ -35,13 +40,6 @@ ActiveRecord::Schema.define(version: 2020_01_14_165548) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "surveys", force: :cascade do |t|
-    t.string "topic"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  add_foreign_key "questions", "surveys"
+  add_foreign_key "questions", "asks"
   add_foreign_key "responses", "questions"
-  add_foreign_key "responses", "surveys"
 end
